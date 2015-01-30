@@ -323,7 +323,7 @@ class PaginateNode(template.Node):
         return ''
 
 
-@register.inclusion_tag('endless/show_more.html', takes_context=True)
+@register.inclusion_tag('endless_pagination/show_more.html', takes_context=True)
 def show_more(context, label=None, loading=settings.LOADING):
     """Show the link to get the next page in a Twitter-like pagination.
 
