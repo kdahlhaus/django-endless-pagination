@@ -59,8 +59,27 @@ you can use the **pagination on scroll** feature: just set the
         <script>$.endlessPaginate({paginateOnScroll: true});</script>
     {% endblock %}
 
+
+If your scrollbars are on an element within the page, and not the page itself, you must add the id of the container to the initialization like this, otherwise the paginateOnScroll will not work.
+
+.. code-block:: html+django
+
+    <h2>Entries:</h2>
+    <div id="entry_list" class="endless_page_template">
+        {% include page_template %}
+    </div>
+
+    {% block js %}
+        {{ block.super }}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+        <script>$.endlessPaginate({paginateOnScroll: true, id: "#entry_list"});</script>
+    {% endblock %}
+ 
+
 That's all. See the :doc:`templatetags_reference` page to improve usage of
 the included templatetags.
+
 
 It is possible to set the **bottom margin** used for pagination on scroll
 (default is 1 pixel). For example, if you want the pagination on scroll
